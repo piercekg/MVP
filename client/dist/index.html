@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>MVP</title>
+</head>
+<body>
+<div id="app"></div>
+<script src="https://sdk.scdn.co/spotify-player.js"></script>
+<script>
+  window.onSpotifyWebPlaybackSDKReady = () => {
+    // You can now initialize Spotify.Player and use the SDK
+    var player = new Spotify.Player({
+  name: 'Taylor Swift Player',
+  getOAuthToken: callback => {
+    // Run code to get a fresh access token
+
+    callback('Bearer BQByOZ8CnOe2uDSrDgAlrG1bRxj1pGW3x_lXe4fhdf3-aonDpfyvoCZnq3_IiKuIjbwTdur_dneuajI9NOE');
+  },
+  volume: 0.5
+});
+
+player.connect().then(success => {
+  if (success) {
+    console.log('The Web Playback SDK successfully connected to Spotify!');
+  }
+})
+  };
+  </script>
+<script src="app.js"></script>
+</body>
+</html>
