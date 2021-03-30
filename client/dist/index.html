@@ -4,28 +4,45 @@
   <title>MVP</title>
 </head>
 <body>
-<div id="app"></div>
-<script src="https://sdk.scdn.co/spotify-player.js"></script>
-<script>
+  <script src="https://sdk.scdn.co/spotify-player.js"></script>
+  <script>
   window.onSpotifyWebPlaybackSDKReady = () => {
-    // You can now initialize Spotify.Player and use the SDK
-    var player = new Spotify.Player({
-  name: 'Taylor Swift Player',
-  getOAuthToken: callback => {
-    // Run code to get a fresh access token
+    const token = 'BQCUrMJQUR2tlxu-5d5Z3T_6miyLIrdZGjv0YZB-JcmCCyL_sWmlc7t-KgPwbIaUgeV2EZQw44scqi0s2oN_CE4BKDWl7GIKldLsMhKv5upoI0M9S87xkXRY1c1x7PqNKcngxtHXr0WJAosQYLSMBhrhbjnR';
+    const player = new Spotify.Player({
+      name: 'Taylor Swift Player',
+      getOAuthToken: cb => { cb(token); },
+      volume: 0.8
+    });
 
-    callback('Bearer BQByOZ8CnOe2uDSrDgAlrG1bRxj1pGW3x_lXe4fhdf3-aonDpfyvoCZnq3_IiKuIjbwTdur_dneuajI9NOE');
-  },
-  volume: 0.5
-});
+    // Error handling
+    player.addListener('initialization_error', ({ message }) => { console.error(message); });
+    player.addListener('authentication_error', ({ message }) => { console.error(message); });
+    player.addListener('account_error', ({ message }) => { console.error(message); });
+    player.addListener('playback_error', ({ message }) => { console.error(message); });
 
-player.connect().then(success => {
-  if (success) {
-    console.log('The Web Playback SDK successfully connected to Spotify!');
-  }
-})
+    // Playback status updates
+    player.addListener('player_state_changed', state => { console.log(state); });
+
+    // Ready
+    player.addListener('ready', ({ device_id }) => {
+      console.log('Ready with Device ID', device_id);
+    });
+
+    // Not Ready
+    player.addListener('not_ready', ({ device_id }) => {
+      console.log('Device ID has gone offline', device_id);
+    });
+
+    // Connect to the player!
+    player.connect().then(success => {
+      if (success) {
+        console.log('The Web Playback SDK successfully connected to Spotify!');
+      }
+    })
+
   };
   </script>
-<script src="app.js"></script>
+  <div id="app"></div>
+  <script src="app.js"></script>
 </body>
 </html>

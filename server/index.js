@@ -33,6 +33,24 @@ app.get('/tracks/:id', (req, res) => {
   })
 })
 
+let formData = {key: 'grant_type', value: 'client_credentials'};
+
+const encodeForm = (data) => {
+  return Object.keys(data).map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]));
+}
+
+app.post('/api/token', (req, res) => {
+  console.log(req.body);
+  axios.post(`https://accounts.spotify.com/api/token`, encodeForm(formData), {headers: {Authorization: `${config.Basic}`}})
+  .then(data => {
+    res.status(200).send(data.data);
+  })
+  .catch(err => {
+    console.log(err);
+    res.sendStatus(500);
+  })
+})
+
 const port = 3001;
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
