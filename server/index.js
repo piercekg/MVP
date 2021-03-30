@@ -11,6 +11,10 @@ app.use(express.static(path.join(__dirname, '/../client/dist')));
 const api = 'https://api.spotify.com/v1';
 const auth = {headers: {Authorization: `${config.Bearer}`}};
 
+app.get('/player.js', (req, res) => {
+  res.status(200).sendFile('/home/kevin/HackReactor/SEI/MVP/client/player.js');
+})
+
 app.get('/search', (req, res) => {
   axios.get(`${api}/search?q=${req.query.q}&type=${req.query.type}&market=US`, auth)
   .then(data => {

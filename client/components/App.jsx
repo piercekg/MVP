@@ -2,6 +2,7 @@ import React from 'react';
 import Search from './Search';
 import TrackData from './TrackData';
 import { search, trackInfo } from '../requests';
+import player from '../player.js';
 
 class App extends React.Component {
   constructor(props) {
@@ -31,7 +32,7 @@ class App extends React.Component {
   }
 
   render() {
-
+    player();
     return (
       <div>
         <Search handleSearch={this.handleSearch} />
