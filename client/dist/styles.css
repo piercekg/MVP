@@ -1,0 +1,13 @@
+body {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-around;
+}
+
+#app {
+  text-align: center;
+}
+
+img {
+  width: 60%;
+}

@@ -1,14 +1,13 @@
 import Token from '../token.js';
 
-const player = () => {
+const player = (trackURI) => {
   window.onSpotifyWebPlaybackSDKReady = () => {
     const token = Token;
 
     const player = new Spotify.Player({
       name: 'Stevie Nicks Player',
       getOAuthToken: cb => { cb(token); },
-      volume: 0.8,
-      spotify_uri: 'spotify:track:5fprEY6WEN1wvFXkgfb22C'
+      volume: 0.8
     });
 
     // Error handling
@@ -26,7 +25,7 @@ const player = () => {
       console.log('Ready with Device ID', device_id);
       play({
           playerInstance: player,
-          spotify_uri: 'spotify:track:5fprEY6WEN1wvFXkgfb22C',
+          spotify_uri: trackURI,
         });
     });
 
@@ -38,7 +37,7 @@ const player = () => {
     // Connect to the player!
     player.connect().then(success => {
       if (success) {
-        console.log(player);
+        //console.log(player);
         console.log('The Web Playback SDK successfully connected to Spotify!');
       }
     })

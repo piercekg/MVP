@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const axios = require('axios');
+const db = require('../database/index.js');
 const config = require('../config.js');
 
 const app = express();
@@ -11,8 +12,15 @@ app.use(express.static(path.join(__dirname, '/../client/dist')));
 const api = 'https://api.spotify.com/v1';
 const auth = {headers: {Authorization: `${config.Bearer}`}};
 
-app.get('/player.js', (req, res) => {
-  res.status(200).sendFile('/home/kevin/HackReactor/SEI/MVP/client/player.js');
+app.get('/tracks', (req, res) => {
+  db.findAll((err, data) => {
+    if (err) {
+      console.log(err);
+      res.sendStatus(500);
+    } else {
+      res.status(200).send(data);
+    }
+  })
 })
 
 app.get('/search', (req, res) => {
