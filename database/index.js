@@ -4,6 +4,70 @@ const data = require('./data.js');
 
 mongoose.connect('mongodb://localhost/Stevie', { useNewUrlParser: true });
 
+let FavoriteSchema = mongoose.Schema({
+  "email": { type: String, index: true },
+  "favorites": [{
+    "id": String,
+    "name": String,
+    "uri": String
+  }]
+});
+
+let Favorite = mongoose.model('Favorites', FavoriteSchema);
+
+let addFavorite = (favObj, callback) => {
+  var fave = {
+    id: favObj.id,
+    name: favObj.name,
+    uri: favObj.uri
+  };
+  Favorite.findOne({ email: favObj.email })
+  .then(result => {
+    if (!result) {
+      Favorite.create({email: favObj.email, favorites: [fave]})
+      .then(result => {
+        callback(null, result);
+      })
+    } else {
+      result.favorites.push(fave);
+      result.save()
+      .then(result => {
+        Favorite.findOne({ email: favObj.email })
+        .then(result => {
+          callback(null, result);
+        })
+      })
+    }
+  })
+  .catch(err => {
+    callback(err, null);
+  })
+};
+
+let getFavorites = (email, callback) => {
+  Favorite.findOne({ email: email })
+  .then(result => {
+    callback(null, result);
+  })
+  .catch(err => {
+    callback(err, null);
+  })
+};
+
+let deleteFavorite = (favObj, callback) => {
+  Favorite.findOne({ email: favObj.email })
+  .then(result => {
+    result.favorites.pull({ _id: favObj._id })
+    result.save()
+    .then(result => {
+      callback(null, result);
+    })
+  })
+  .catch(err => {
+    callback(err, null);
+  })
+}
+
 let TrackSchema = mongoose.Schema({
   "id": String,
   "name": String,
@@ -48,5 +112,8 @@ let createMany = (tracks) => {
 };
 
 module.exports = {
-  findAll
+  findAll,
+  addFavorite,
+  getFavorites,
+  deleteFavorite
 }

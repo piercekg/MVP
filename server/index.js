@@ -8,6 +8,15 @@ const app = express();
 
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '/../client/dist')));
+//app.use((req, res, next) => {
+  //res.header("Access-Control-Allow-Origin", "http://18.217.19.253");
+  //res.header("Access-Control-Allow-Origin", "http://localhost:3000");
+  //res.header("Access-Control-Allow-Origin", "*");
+  //res.header("Access-Control-Allow-Credentials", "true");
+  //res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT,PATCH,DELETE");
+  //res.header("Access-Control-Allow-Headers", "*");
+  //next();
+//});
 
 const api = 'https://api.spotify.com/v1';
 const auth = {headers: {Authorization: `${config.Bearer}`}};
@@ -16,12 +25,45 @@ app.get('/tracks', (req, res) => {
   db.findAll((err, data) => {
     if (err) {
       console.log(err);
-      res.sendStatus(500);
+      res.status(500).send(err);
     } else {
       res.status(200).send(data);
     }
   })
-})
+});
+
+app.post('/favorites', (req, res) => {
+  db.addFavorite(req.body, (err, data) => {
+    if (err) {
+      console.log(err);
+      res.status(500).send(err);
+    } else {
+      res.status(201).send(data);
+    }
+  })
+});
+
+app.get('/favorites', (req, res) => {
+  db.getFavorites(req.body.email, (err, data) => {
+    if (err) {
+      console.log(err);
+      res.status(500).send(err);
+    } else {
+      res.status(200).send(data);
+    }
+  })
+});
+
+app.delete('/favorites/', (req, res) => {
+  db.deleteFavorite(req.body, (err, data) => {
+    if (err) {
+      console.log(err);
+      res.status(500).send(err);
+    } else {
+      res.status(200).send(data);
+    }
+  })
+});
 
 app.get('/search', (req, res) => {
   axios.get(`${api}/search?q=${req.query.q}&type=${req.query.type}&market=US`, auth)
