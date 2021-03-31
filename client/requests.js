@@ -10,7 +10,37 @@ const getTracks = (callback) => {
   .catch(err => {
     console.log(err);
   })
-}
+};
+
+const addFavorite = (favObj, callback) => {
+  axios.post(`${server}/favorites`, favObj)
+  .then(data => {
+    callback(data);
+  })
+  .catch(err => {
+    callback(err);
+  })
+};
+
+const getFavorites = (emailObj, callback) => {
+  axios.get(`${server}/favorites?email=${emailObj.email}`)
+  .then(data => {
+    callback(data);
+  })
+  .catch(err => {
+    callback(err);
+  })
+};
+
+const deleteFavorite = (favObj, callback) => {
+  axios.delete(`${server}/favorites?email=${favObj.email}&_id=${favObj._id}`)
+  .then(data => {
+    callback(data);
+  })
+  .catch(err => {
+    callback(err);
+  })
+};
 
 const search = (params, callback) => {
   axios.get(`${server}/search?q=${params.query}&type=${params.type}`)
@@ -35,5 +65,8 @@ const trackInfo = (id, callback) => {
 export {
   search,
   trackInfo,
-  getTracks
+  getTracks,
+  addFavorite,
+  getFavorites,
+  deleteFavorite
 }

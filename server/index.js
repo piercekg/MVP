@@ -44,7 +44,7 @@ app.post('/favorites', (req, res) => {
 });
 
 app.get('/favorites', (req, res) => {
-  db.getFavorites(req.body.email, (err, data) => {
+  db.getFavorites(req.query.email, (err, data) => {
     if (err) {
       console.log(err);
       res.status(500).send(err);
@@ -54,8 +54,8 @@ app.get('/favorites', (req, res) => {
   })
 });
 
-app.delete('/favorites/', (req, res) => {
-  db.deleteFavorite(req.body, (err, data) => {
+app.delete('/favorites', (req, res) => {
+  db.deleteFavorite(req.query, (err, data) => {
     if (err) {
       console.log(err);
       res.status(500).send(err);

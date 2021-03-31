@@ -1,10 +1,11 @@
 import React from 'react';
 import FavoriteItem from './FavoriteItem';
 
-const FavoriteList = ({ favorites }) => (
+const FavoriteList = ({ favorites, handleDelete }) => (
   <div>
-    {favorites.map(item => {
-      return (<FavoriteItem item={item} />)
+    <h3>My List:</h3>
+    {favorites.favorites.map(item => {
+      return (<FavoriteItem key={item._id} item={item} handleDelete={handleDelete} />)
     })}
   </div>
 );

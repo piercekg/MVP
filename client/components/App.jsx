@@ -38,7 +38,7 @@ class App extends React.Component {
         <h2>Welcome to the Daily Stevie Player!</h2>
         <CurrentTrack track={track} />
         <Stevie />
-        <Favorites />
+        <Favorites track={track} />
         <PlayAnother />
       </div>
     );
