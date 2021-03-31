@@ -11,10 +11,12 @@ class Favorites extends React.Component {
       favorites: null,
       form: false,
       list: false,
-      add: false
+      add: false,
+      button: true
     };
   this.handleSubmit = this.handleSubmit.bind(this);
   this.handleDelete = this.handleDelete.bind(this);
+  this.handleClick = this.handleClick.bind(this);
   }
 
   handleSubmit(favObj) {
@@ -26,7 +28,8 @@ class Favorites extends React.Component {
       addFavorite(favObj, (data) => {
         this.setState({
           favorites: data.data,
-          list: true
+          list: true,
+          button: false
         });
       });
     } else {
@@ -37,6 +40,12 @@ class Favorites extends React.Component {
         });
       });
     }
+  }
+
+  handleClick() {
+    this.setState({
+      form: false
+    });
   }
 
   handleDelete(favObj) {
@@ -55,13 +64,19 @@ class Favorites extends React.Component {
     return (
       <div>
         <h3>Love the current track?</h3>
-        <button onClick={() => {
-          this.setState({
-            form: true,
-            add: true
-          });
-        }}>Add to My Favorites!</button>
-        {this.state.form ? <Form track={this.props.track} add={this.state.add} handleSubmit={this.handleSubmit} /> : null}
+        {this.state.button ? <button onClick={() => {
+          if (this.state.email) {
+            var track = this.props.track;
+            track.email = this.state.email;
+            this.handleSubmit(track);
+          } else {
+            this.setState({
+              form: true,
+              add: true
+            });
+          }
+        }}>Add to My Favorites!</button> : null}
+        {this.state.form ? <Form track={this.props.track} user={this.state.email} add={this.state.add} handleSubmit={this.handleSubmit} handleClick={this.handleClick} /> : null}
         {this.state.list ? <FavoriteList favorites={this.state.favorites} handleDelete={this.handleDelete} /> : null}
 
         {!this.state.list ? <React.Fragment><h3>Returning user?</h3><button onClick={() => {
