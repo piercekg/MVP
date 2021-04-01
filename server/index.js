@@ -21,6 +21,13 @@ app.use((req, res, next) => {
 const api = 'https://api.spotify.com/v1';
 const auth = {headers: {Authorization: `${config.Bearer}`}};
 
+const youtube = 'https://www.googleapis.com/youtube/v3';
+const youtubeauth = config.key;
+
+app.get('/.well-known/pki-validation/48704D92AE783779235727A3F7E7641E.txt', (req, res) => {
+  res.sendFile('/home/kevin/HackReactor/SEI/MVP/server/48704D92AE783779235727A3F7E7641E.txt');
+});
+
 app.get('/tracks', (req, res) => {
   db.findAll((err, data) => {
     if (err) {
