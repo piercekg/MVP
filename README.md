@@ -45,5 +45,5 @@ Once the project moves into development, the press release can be used as a touc
 ![Stevie the Dog](./client/dist/images/1.jpg)
 
 ***The Daily Stevie Player is brought to you by:***\
-**Stevie!**\
+**Stevie the Dog!**\
 **Kevin Pierce**
