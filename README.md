@@ -1,5 +1,4 @@
-# Project Name #
-The Daily Stevie Player
+# The Daily Stevie Player #
 <!--
 > This material was originally posted [here](http://www.quora.com/What-is-Amazons-approach-to-product-development-and-product-management). It is reproduced here for posterities sake.
 
@@ -16,10 +15,10 @@ Oh, and I also like to write press-releases in what I call "Oprah-speak" for mai
 Once the project moves into development, the press release can be used as a touchstone; a guiding light. The product team can ask themselves, "Are we building what is in the press release?" If they find they're spending time building things that aren't in the press release (overbuilding), they need to ask themselves why. This keeps product development focused on achieving the customer benefits and not building extraneous stuff that takes longer to build, takes resources to maintain, and doesn't provide real customer benefit (at least not enough to warrant inclusion in the press release).
  -->
 
-## Heading ##
+## Random Stevie Nicks Song Player ##
   Random Stevie Nicks Song Player
 
-## Sub-Heading ##
+### For anyone who needs a daily dose of Stevie Nicks ###
   For anyone who needs a daily dose of Stevie Nicks
 
 ## Summary ##
@@ -31,14 +30,20 @@ Once the project moves into development, the press release can be used as a touc
 ## Solution ##
   Using track data from Spotify's web api and embedded playback with Spotify's Web Playback SDK, the app serves up a random track from the catalogues of Stevie Nicks and Fleetwood Mac. User's can sign in (enter an email address) to add the current song to their personal list of favorites. Future features include serving up songs that match a user's mood.
 
-## Quote from You ##
+## From the Creator ##
   "Finally people have somewhere to turn when they've got a fever and the only prescription is Stevie Nicks."
 
 ## How to Get Started ##
   Just visit the Daily Stevie Player to hear a random song from Stevie Nicks! To save songs to your list of favorites just enter your email.
 
-## Customer Quote ##
+## From our Users ##
   "I was feeling like I had been brought down by a landslide since I was at the edge of seventeen, so I visited the Daily Stevie Player and got the boost I needed to make it through the day from 'The Chain'.
+    Rhiannon - Boulder, CO
 
-## Closing and Call to Action ##
-  Visit the Daily Stevie Player now to hear an old favorite or maybe a deep cut you didn't even know you loved!
+### Visit the Daily Stevie Player now to hear an old favorite or maybe a deep cut you didn't even know you loved! ###
+
+![Stevie the Dog](./client/dist/images/1.jpg)
+
+***The Daily Stevie Player is brought to you by:***
+**Stevie!**
+**Kevin Pierce**
