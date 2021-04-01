@@ -16,10 +16,10 @@ Once the project moves into development, the press release can be used as a touc
  -->
 
 ## Random Stevie Nicks Song Player ##
-  Random Stevie Nicks Song Player
 
-### For anyone who needs a daily dose of Stevie Nicks ###
-  For anyone who needs a daily dose of Stevie Nicks
+
+### **For anyone who needs a daily dose of Stevie Nicks** ###
+
 
 ## Summary ##
   Visitors to this web app will be treated to a random selection from the catalogues of Stevie Nicks and Fleetwood Mac. Users can log in to save songs to their list of favorites.
@@ -37,13 +37,13 @@ Once the project moves into development, the press release can be used as a touc
   Just visit the Daily Stevie Player to hear a random song from Stevie Nicks! To save songs to your list of favorites just enter your email.
 
 ## From our Users ##
-  "I was feeling like I had been brought down by a landslide since I was at the edge of seventeen, so I visited the Daily Stevie Player and got the boost I needed to make it through the day from 'The Chain'.
+  "I was feeling like I had been brought down by a landslide since I was at the edge of seventeen, so I visited the Daily Stevie Player and got the boost I needed to make it through the day from 'The Chain'.\
     Rhiannon - Boulder, CO
 
 ### Visit the Daily Stevie Player now to hear an old favorite or maybe a deep cut you didn't even know you loved! ###
 
 ![Stevie the Dog](./client/dist/images/1.jpg)
 
-***The Daily Stevie Player is brought to you by:***
-**Stevie!**
+***The Daily Stevie Player is brought to you by:***\
+**Stevie!**\
 **Kevin Pierce**
