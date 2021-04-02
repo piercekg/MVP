@@ -37,7 +37,7 @@ Once the project moves into development, the press release can be used as a touc
   Just visit the Daily Stevie Player to hear a random song from Stevie Nicks! To save songs to your list of favorites just enter your email.
 
 ## From our Users ##
-  "I was feeling like I had been brought down by a landslide since I was at the edge of seventeen, so I visited the Daily Stevie Player and got the boost I needed to go my own way from 'The Chain'.\
+  "I was feeling like I had been brought down by a landslide since I was at the edge of seventeen, so I visited the Daily Stevie Player and got the boost I needed to go my own way hearing a live version of 'The Chain'.\
     Rhiannon - Boulder, CO
 
 ### Visit the Daily Stevie Player now to hear an old favorite or maybe a deep cut you didn't even know you loved! ###
