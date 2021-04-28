@@ -8,6 +8,14 @@ body {
   text-align: center;
 }
 
+.btn {
+ background-image: linear-gradient(to bottom right, rgb(236, 13, 151), rgb(243, 160, 208));
+ border-color: black;
+ border-width: 2px;
+ width: fit-content;
+ text-align: center;
+}
+
 img {
   width: 60%;
 }

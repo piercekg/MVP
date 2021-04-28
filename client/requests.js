@@ -2,6 +2,16 @@ import axios from 'axios';
 
 const server = 'http://localhost:3001'
 
+const login = (callback) => {
+  axios.get(`${server}/login`)
+  .then(data => {
+    callback(data);
+  })
+  .catch(err => {
+    console.log(err);
+  })
+};
+
 const getTracks = (callback) => {
   axios.get(`${server}/tracks`)
   .then(data => {
@@ -63,6 +73,7 @@ const trackInfo = (id, callback) => {
 };
 
 export {
+  login,
   search,
   trackInfo,
   getTracks,

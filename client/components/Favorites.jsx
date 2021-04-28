@@ -64,7 +64,7 @@ class Favorites extends React.Component {
     return (
       <div>
         <h3>Love the current track?</h3>
-        {this.state.button ? <button onClick={() => {
+        {this.state.button ? <button className='btn' onClick={() => {
           if (this.state.email) {
             var track = this.props.track;
             track.email = this.state.email;
@@ -75,16 +75,16 @@ class Favorites extends React.Component {
               add: true
             });
           }
-        }}>Add to My Favorites!</button> : null}
+        }}><strong>Add to My Favorites!</strong></button> : null}
         {this.state.form ? <Form track={this.props.track} user={this.state.email} add={this.state.add} handleSubmit={this.handleSubmit} handleClick={this.handleClick} /> : null}
         {this.state.list ? <FavoriteList favorites={this.state.favorites} handleDelete={this.handleDelete} /> : null}
 
-        {!this.state.list ? <React.Fragment><h3>Returning user?</h3><button onClick={() => {
+        {!this.state.list ? <React.Fragment><h3>Returning user?</h3><button className='btn' onClick={() => {
           this.setState({
             form: true,
             add: false
           });
-        }}>View My Favorite Tracks!</button></React.Fragment> : null}
+        }}><strong>View My Favorite Tracks!</strong></button></React.Fragment> : null}
       </div>
     );
   }

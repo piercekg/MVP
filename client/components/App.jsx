@@ -6,20 +6,43 @@ import PlayAnother from './PlayAnother';
 import Stevie from './Stevie';
 import Favorites from './Favorites';
 import exampleData from '../data.js';
-import { search, trackInfo, getTracks } from '../requests';
+import { login, search, trackInfo, getTracks } from '../requests';
 import player from '../player.js';
+import Auth from '../../auth.js';
+
+// Get the hash of the url
+const hash = window.location.hash
+  .substring(1)
+  .split("&")
+  .reduce(function(initial, item) {
+    if (item) {
+      var parts = item.split("=");
+      initial[parts[0]] = decodeURIComponent(parts[1]);
+    }
+    return initial;
+  }, {});
+window.location.hash = "";
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       tracks: exampleData,
-      currentTrack: exampleData[16]
+      currentTrack: exampleData[21],
+      token: false
     };
-
+  this.newTrack = this.newTrack.bind(this);
   }
 
   componentDidMount() {
+    let _token = hash.access_token;
+    if (_token) {
+      // Set token
+      this.setState({
+        token: _token
+      });
+    }
+    this.newTrack();
     getTracks(data => {
       this.setState({
         tracks: data.data
@@ -27,25 +50,45 @@ class App extends React.Component {
     })
   }
 
-  render() {
+  newTrack () {
     let index = Math.floor(Math.random() * this.state.tracks.length);
     let track = this.state.tracks[index];
+    this.setState({
+      currentTrack: track
+    });
+  }
 
-    player(track.uri);
+  render() {
+    //let index = Math.floor(Math.random() * this.state.tracks.length);
+    //let track = this.state.tracks[index];
+    let track = this.state.currentTrack;
+    //console.log(track);
+
+    if (this.state.token) {
+      player(track.uri, this.state.token);
+    }
 
     return (
       <div>
         <h2>Welcome to the Daily Stevie Player!</h2>
-        <CurrentTrack track={track} />
+        {!this.state.token ? <a className='btn' href={`${Auth.authEndpoint}?client_id=${Auth.clientId}&response_type=token&redirect_uri=${Auth.redirectUri}&scope=${Auth.scopes.join("%20")}&state=${Auth.state}`}><strong>Login to Spotify to Listen</strong></a> : null}
+        {this.state.token ? <CurrentTrack track={track} /> : null}
         <Stevie />
-        <Favorites track={track} />
-        <PlayAnother />
+        {this.state.token ? <React.Fragment>
+          <Favorites track={track} />
+          <h3>Want another random track from Stevie?</h3>
+          <a className='btn' href={`${Auth.authEndpoint}?client_id=${Auth.clientId}&response_type=token&redirect_uri=${Auth.redirectUri}&scope=${Auth.scopes.join("%20")}&state=${Auth.state}`}><strong>Play Another!</strong></a>
+        </React.Fragment> : null}
       </div>
     );
   }
 }
 
 export default App;
+
+/*
+<PlayAnother newTrack={this.newTrack}/>
+*/
 
 /*
   trackPicker(tracks) {

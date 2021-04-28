@@ -24,6 +24,20 @@ const auth = {headers: {Authorization: `${config.Bearer}`}};
 const youtube = 'https://www.googleapis.com/youtube/v3';
 const youtubeauth = config.key;
 
+app.get('/login', (req, res) => {
+  axios.get(`https://accounts.spotify.com/authorize?client_id=88e83947e4fb497e9c85307e40abab6c&response_type=code&redirect_uri=https%3A%2F%2Flocalhost:3001%2Fcallback&scope=streaming%20user-read-private%20user-read-email&state=34fFs29kd09`)
+  .then(data => {
+    console.log(data.data);
+    //console.log(data.request.res.responseUrl);
+    //res.redirect(data.request.res._redirectable._currentUrl);
+    res.status(200).send(data.data);
+  })
+  .catch(err => {
+    //console.log(err);
+    res.status(500).send(err);
+  })
+})
+
 app.get('/.well-known/pki-validation/48704D92AE783779235727A3F7E7641E.txt', (req, res) => {
   res.sendFile('/home/kevin/HackReactor/SEI/MVP/server/48704D92AE783779235727A3F7E7641E.txt');
 });

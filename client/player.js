@@ -1,8 +1,8 @@
 import Token from '../token.js';
 
-const player = (trackURI) => {
+const player = (trackURI, auth) => {
   window.onSpotifyWebPlaybackSDKReady = () => {
-    const token = Token;
+    const token = auth;
 
     const player = new Spotify.Player({
       name: 'Stevie Nicks Player',
