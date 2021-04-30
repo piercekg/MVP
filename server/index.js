@@ -54,7 +54,7 @@ app.get('/tracks', (req, res) => {
 });
 
 app.post('/favorites', (req, res) => {
-  db.addFavorite(req.body, (err, data) => {
+  db.addFavorite(req.query.email, req.body, (err, data) => {
     if (err) {
       console.log(err);
       res.status(500).send(err);

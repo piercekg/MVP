@@ -15,24 +15,27 @@ let FavoriteSchema = mongoose.Schema({
 
 let Favorite = mongoose.model('Favorites', FavoriteSchema);
 
-let addFavorite = (favObj, callback) => {
+let addFavorite = (email, track, callback) => {
   var fave = {
-    id: favObj.id,
-    name: favObj.name,
-    uri: favObj.uri
+    id: track.id,
+    name: track.name,
+    uri: track.uri
   };
-  Favorite.findOne({ email: favObj.email })
+  //console.log(email, fave);
+  Favorite.findOne({ email: email })
   .then(result => {
     if (!result) {
-      Favorite.create({email: favObj.email, favorites: [fave]})
+      Favorite.create({email: email, favorites: [fave]})
       .then(result => {
         callback(null, result);
       })
+    } else if (result.favorites.some(song => song.id === fave.id)) {
+      callback(null, result);
     } else {
       result.favorites.push(fave);
       result.save()
       .then(result => {
-        Favorite.findOne({ email: favObj.email })
+        Favorite.findOne({ email: email })
         .then(result => {
           callback(null, result);
         })

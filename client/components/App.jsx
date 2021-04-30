@@ -6,7 +6,7 @@ import PlayAnother from './PlayAnother';
 import Stevie from './Stevie';
 import Favorites from './Favorites';
 import exampleData from '../data.js';
-import { login, search, trackInfo, getTracks } from '../requests';
+import { getUser, search, trackInfo, getTracks } from '../requests';
 import player from '../player.js';
 import Auth from '../../auth.js';
 
@@ -29,7 +29,8 @@ class App extends React.Component {
     this.state = {
       tracks: exampleData,
       currentTrack: exampleData[21],
-      token: false
+      token: false,
+      user: false
     };
   this.newTrack = this.newTrack.bind(this);
   }
@@ -41,6 +42,11 @@ class App extends React.Component {
       this.setState({
         token: _token
       });
+      getUser(_token, (data) => {
+        this.setState({
+          user: data.data
+        });
+      })
     }
     this.newTrack();
     getTracks(data => {
@@ -65,17 +71,18 @@ class App extends React.Component {
     //console.log(track);
 
     if (this.state.token) {
+      //console.log(this.state.token, this.state.user);
       player(track.uri, this.state.token);
     }
 
     return (
       <div>
         <h2>Welcome to the Daily Stevie Player!</h2>
-        {!this.state.token ? <a className='btn' href={`${Auth.authEndpoint}?client_id=${Auth.clientId}&response_type=token&redirect_uri=${Auth.redirectUri}&scope=${Auth.scopes.join("%20")}&state=${Auth.state}`}><strong>Login to Spotify to Listen</strong></a> : null}
+        {!this.state.token ? <a className='btn' href={`${Auth.authEndpoint}?client_id=${Auth.clientId}&response_type=token&redirect_uri=${Auth.redirectUri}&scope=${Auth.scopes.join("%20")}&state=${Auth.state}`}><strong>Login with Spotify to Start Listening!</strong></a> : null}
         {this.state.token ? <CurrentTrack track={track} /> : null}
         <Stevie />
         {this.state.token ? <React.Fragment>
-          <Favorites track={track} />
+          <Favorites track={track} user={this.state.user} />
           <h3>Want another random track from Stevie?</h3>
           <a className='btn' href={`${Auth.authEndpoint}?client_id=${Auth.clientId}&response_type=token&redirect_uri=${Auth.redirectUri}&scope=${Auth.scopes.join("%20")}&state=${Auth.state}`}><strong>Play Another!</strong></a>
         </React.Fragment> : null}

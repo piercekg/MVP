@@ -16,6 +16,12 @@ body {
  text-align: center;
 }
 
+.delete {
+  border: none;
+  background: none;
+  font-size: xx-small;
+}
+
 img {
   width: 60%;
 }
