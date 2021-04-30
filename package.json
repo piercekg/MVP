@@ -5,6 +5,7 @@
   "main": "./server/index.js",
   "scripts": {
     "webpack": "webpack",
+    "start-prod": "forever start ./server/index.js",
     "start": "node ./server/index.js",
     "react-dev": "webpack --mode development --watch",
     "start-dev": "npx nodemon ./server/index.js",
