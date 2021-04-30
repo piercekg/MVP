@@ -23,7 +23,6 @@ class Favorites extends React.Component {
   componentDidUpdate (prevProps) {
     if (this.props.user.email !== prevProps.user.email) {
       getFavorites(this.props.user.email, (data) => {
-        console.log(data);
         if (!data.data) {
           this.setState({
             email: this.props.user.email,
