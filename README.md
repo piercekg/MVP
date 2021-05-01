@@ -38,7 +38,7 @@ Once the project moves into development, the press release can be used as a touc
   "I was feeling like I had been brought down by a landslide since I was at the edge of seventeen, so I visited the Daily Stevie Player and got the boost I needed to go my own way hearing a live version of 'Dreams'.\
     Rhiannon - Boulder, CO
 
-### Visit the Daily Stevie Player now to hear an old favorite or maybe a deep cut you didn't even know you loved! ###
+### [Visit the Daily Stevie Player now](http://www.dailystevieplayer.com) to hear an old favorite or maybe a deep cut you didn't even know you loved! ###
 
 ![Stevie the Dog](./client/dist/images/1.jpg)
 
