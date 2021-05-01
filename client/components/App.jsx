@@ -77,7 +77,7 @@ class App extends React.Component {
 
     return (
       <div>
-        <h2>Welcome to the Daily Stevie Player!</h2>
+        <h1>Welcome to the Daily Stevie Player!</h1>
         <h3>The Random Song Player for Your Daily Stevie Nicks Fix</h3>
         {!this.state.token ? <a className='btn' href={`${Auth.authEndpoint}?client_id=${Auth.clientId}&response_type=token&redirect_uri=${Auth.redirectUri}&scope=${Auth.scopes.join("%20")}&state=${Auth.state}`}><strong>Login with Spotify to Start Listening!</strong></a> : null}
         {this.state.token ? <CurrentTrack track={track} /> : null}
