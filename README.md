@@ -20,15 +20,15 @@ Once the project moves into development, the press release can be used as a touc
 ### **For anyone who needs a daily dose of Stevie Nicks** ###
 
 ## Summary ##
-  Visitors to this web app will be treated to a random selection from the catalogues of Stevie Nicks and Fleetwood Mac. Users can log in to save songs to their list of favorites.
+  Visitors to this web app will be treated to a random selection from the catalogues of Stevie Nicks and Fleetwood Mac. Users can save songs they enjoy to their list of favorites.
 
 ## Problem ##
-  Sometimes you want to hear Stevie Nicks sing something and just want to be surprised by what it is
+  Sometimes you want to hear Stevie Nicks sing something and just want to be surprised by what it is.
 
 ## Solution ##
-  Using track data from Spotify's web API and embedded playback with Spotify's Web Playback SDK, the app serves up a random track from the catalogues of Stevie Nicks and Fleetwood Mac. User's can sign in (enter an email address) to add the current song to their personal list of favorites. Future features include serving up songs that match a user's mood.
+  Using track data from Spotify's web API and embedded playback with Spotify's Web Playback SDK, the app serves up a random track from the catalogues of Stevie Nicks and Fleetwood Mac. User's can add the current song to their personal list of favorites. Future features include exporting a user's list of favorites as a Spotify playlist, and serving up songs that match a user's mood.
 
-## From the Creator ##
+## From the Creators ##
   "Finally people have somewhere to turn when they've got a fever and the only prescription is Stevie Nicks."
 
 ## How to Get Started ##
