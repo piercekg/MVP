@@ -32,7 +32,7 @@ Once the project moves into development, the press release can be used as a touc
   "Finally people have somewhere to turn when they've got a fever and the only prescription is Stevie Nicks."
 
 ## How to Get Started ##
-  Just visit the [Daily Stevie Player](www.dailystevieplayer.com) and login with Spotify to hear a random song from Stevie Nicks! To save songs to your list of favorites just click the button.
+  Just visit the [Daily Stevie Player](http://www.dailystevieplayer.com) and login with Spotify to hear a random song from Stevie Nicks! To save songs to your list of favorites just click the button.
 
 ## From our Users ##
   "I was feeling like I had been brought down by a landslide since I was at the edge of seventeen, so I visited the Daily Stevie Player and got the boost I needed to go my own way hearing a live version of 'Dreams'.\
