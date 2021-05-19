@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const helpers = require('./helpers.js');
 const data = require('./data.js');
 
 mongoose.connect('mongodb://localhost/Stevie', { useNewUrlParser: true });
@@ -21,7 +20,6 @@ let addFavorite = (email, track, callback) => {
     name: track.name,
     uri: track.uri
   };
-  //console.log(email, fave);
   Favorite.findOne({ email: email })
   .then(result => {
     if (!result) {

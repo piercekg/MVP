@@ -1,16 +1,9 @@
 import axios from 'axios';
+import Auth from '../auth.js';
 
 const server = 'http://localhost:3001'
 
-const login = (callback) => {
-  axios.get(`${server}/login`)
-  .then(data => {
-    callback(data);
-  })
-  .catch(err => {
-    console.log(err);
-  })
-};
+const login = `${Auth.authEndpoint}?client_id=${Auth.clientId}&response_type=token&redirect_uri=${Auth.redirectUri}&scope=${Auth.scopes.join("%20")}&state=${Auth.state}`;
 
 const getUser = (token, callback) => {
   axios.get(`https://api.spotify.com/v1/me`, {headers: {Authorization: `Bearer ${token}`}})
@@ -62,31 +55,9 @@ const deleteFavorite = (email, track, callback) => {
   })
 };
 
-const search = (params, callback) => {
-  axios.get(`${server}/search?q=${params.query}&type=${params.type}`)
-  .then(data => {
-    callback(data);
-  })
-  .catch(err => {
-    console.log(err);
-  })
-};
-
-const trackInfo = (id, callback) => {
-  axios.get(`${server}/tracks/${id}`)
-  .then(data => {
-    callback(data);
-  })
-  .catch(err => {
-    console.log(err);
-  })
-};
-
 export {
-  getUser,
   login,
-  search,
-  trackInfo,
+  getUser,
   getTracks,
   addFavorite,
   getFavorites,
