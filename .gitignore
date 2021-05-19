@@ -3,3 +3,4 @@ config.js
 token.js
 app.js
 auth.js
+package-lock.json
